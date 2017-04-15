@@ -7,24 +7,11 @@ const github = githubhook({
   secret: '12345'
 });
 
-github.on('issues', (repo, ref, data) => {
-  console.log('event!');
+github.on('*', (event, repo, ref, data) => {
+  console.log('event triggered!');
+  console.log('event:', event);
 });
 
-github.on('issue_comment', (repo, ref, data) => {
-  console.log('comment!');
-});
+github.listen();
 
-github.on('member', (repo, ref, data) => {
-  console.log('member!');
-});
-
-github.on('membership', (repo, ref, data) => {
-  console.log('member!');
-});
-
-github.on('team', (repo, ref, data) => {
-  console.log('member!');
-});
-
-module.exports = github;
+// module.exports = github;
